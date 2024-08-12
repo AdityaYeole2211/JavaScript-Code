@@ -16,6 +16,20 @@
 // console.log(null >= 0);true 
 // console.log(null <= 0);true 
 
+//EXPLANATION : 
+// console.log(null == 0); // false
+// Explanation: The == operator (loose equality) performs type coercion. 
+// However, null is only loosely equal to undefined and not to other values. 
+// So null == 0 is false because null does not coerce to 0.
+// 4. console.log(null >= 0); // true
+// Explanation: The >= operator checks if the value on the left is greater than or equal 
+// to the value on the right. JavaScript converts null to 0 and 
+// checks if 0 >= 0, which is true.
+// 5. console.log(null <= 0); // true
+// Explanation: The <= operator checks if the value on the left is less than or equal 
+// to the value on the right. Similar to >=, 
+// JavaScript converts null to 0 and checks if 0 <= 0, which is true.
+
 // console.log(undefined > 0); false
 // console.log(undefined < 0);false
 // console.log(undefined == 0);false

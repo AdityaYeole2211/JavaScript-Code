@@ -52,8 +52,40 @@ let str2 = "World"
 // console.log(2 + 2 + "1");//expected -> 221 as before but actual ->41
 
 //CONFUSING READ ECMA SCRIPT DEOCUMENT FOR PRIMITVE TYPE CONVERSION AND PRECEDENCE
+// ******************8EXPLANATION***************************************************
+/*Operator Precedence and Associativity: In JavaScript, 
+the + operator is used for both addition and string concatenation. 
+When the + operator is used with strings, it performs string concatenation 
+rather than arithmetic addition.
 
+Type Coercion: JavaScript will coerce (convert) non-string values to strings 
+when they are used with the + operator if one of the operands is a string.
 
+The expression "1" + 2 first evaluates "1" + 2. Since "1" is a string, 
+JavaScript converts 2 to a string and performs string concatenation. 
+The result is "12".
+Next, "12" + 2 is evaluated. Again, since "12" is a string,
+ 2 is converted to a string, and string concatenation is performed. 
+ The result is "122".
+ ***********************************************************************************************
+*/
+
+/*
+i*****************************************************************************************8
+Operator Precedence and Associativity: In JavaScript, arithmetic operations 
+are performed from left to right, and the + operator for addition
+ has higher precedence over the + operator for concatenation.
+
+Type Coercion: JavaScript first evaluates the arithmetic operations 
+before performing string concatenation.
+
+The expression 2 + 2 is evaluated first, resulting in 4 because 
+both operands are numbers.
+Next, 4 + "1" is evaluated. Since "1" is a string, JavaScript 
+converts 4 to a string, and performs string concatenation. The result is "41".
+Thus, the actual result is "41".
+**********************************************************************************************************
+*/
 // console.log(3+2-4*5/6);//BAD PRACTICE 
 console.log(+true)//1 -> converted to number
 // console.log(true+) //error
