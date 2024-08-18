@@ -86,7 +86,45 @@ console.log(Object.entries(tinderUser));
 // ->recieves as array of arrays
 
 //to check ehetehr object has particular key :
-console.log(tinderUser.hasOwnProperty("isLoggedIn")); //true
+// console.log(tinderUser.hasOwnProperty("isLoggedIn")); //true
+
+
+//Object De-Construction 
+const user123 = {
+    name: "Aditya",
+    age : 21,
+    courseInstructor: "me"
+}
+//accesing -> 
+// console.log(user123.courseInstructor); //tedious task every time 
+// const {courseInstructor} = user123
+const {courseInstructor : instructor} = user123
+//now can write like 
+// console.log(courseInstructor); //me 
+console.log(instructor); //me 
+//used a lot in react
+
+//**************************JSON********************88 */
+//JSON is built on two structures:
+/*
+A collection of name/value pairs. In various languages, this is realized as an object, record, struct, dictionary, hash table, keyed list, or associative array.
+An ordered list of values. In most languages, this is realized as an array, vector, list, or sequence.
+
+EX: 
+{
+  "name" : "Aditya",
+  "age" : 21,
+  "id" : 4231
+}
+
+OR
+
+[
+  {},
+  {},
+  {}
+]
+
 
 
 
