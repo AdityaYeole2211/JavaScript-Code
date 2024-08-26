@@ -13,6 +13,13 @@ if (userEmail) {
 //truthy values->assumed to be true 
 // "0", 'false', " ", [], {}, function(){}
 
+/*
+PLEASE NOTE :
+1. false == 0
+2.false  == ''
+3. 0 == '' 
+all  return true 
+*/
 //checking  array empty not done thru turuthy 
 // if (userEmail.length === 0) {
 //     console.log("Array is empty");
