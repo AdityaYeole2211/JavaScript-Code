@@ -3,13 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <title> DOM Learning</title>
+    <style>
+        .bg-black{
+            background-color: rgb(21, 20, 20);
+            color: aliceblue;
+        }
+    </style>
 </head>
 <body class="bg-black">
     <div >
-        <h1 class="heading">Introduction to DOM: Document Object Modelling</h1>
+        <h1 id="title" class="heading">Introduction to DOM: Document Object Modelling <span style="display: none;">test on Dom</span></h1>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis, enim!</p>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <input type="password" name="" id="">
+        <ul>
+            <li class="list-items">one</li>
+            <li class="list-items">two</li>
+            <li class="list-items">three</li>
+        </ul>
 
     </div>
     
 </body>
 </html>
+
+<!--
+to be done in browser: 
+1.The getElementById() method of the Document interface returns an Element object representing the element whose id property matches the specified string. Since element IDs are required to be unique if specified, they're a useful way to get access to a specific element quickly.
+
+document.getElementById('title')
+<h1 id=​"title" class=​"heading">​Introduction to DOM: Document Object Modelling​</h1>​
+
+document.getElementById('title').id
+'title'
+
+/*REMEMBER*/
+document.getElementById('title').class
+undefined
+
+document.getElementById('title').className
+'heading'
+
+The getAttribute() method returns the value of an element's attribute.
+document.getElementById('title').getAttribute('class')
+'heading'
+document.getElementById('title').getAttribute('id')
+'title'
+
+The setAttribute() method sets a new value to an attribute.If the attribute does not exist, it is created first.
+document.getElementById('title').setAttribute('class', 'test')
+undefined
+
+can store the entire title in a variable named title 
+
+ops->
+1. title.textContent -> shows entire text irrespective of its css styling 
+title.textContent
+'Introduction to DOM: Document Object Modelling test on Dom'
+
+2. title.innerText : shows only visible text
+title.innerText
+'Introduction to DOM: Document Object Modelling'
+
+3. title.innerHTML : shows HTML content also
+title.innerHTML
+'Introduction to DOM: Document Object Modelling <span style="display: none;">test on Dom</span>'
+
+
+But selector used in real life is others. EX: 
+1. querySelector: similar to earlier jquery syntax, uses css-like querys , so it is easier -> gives only first instance in case of multiple instances present.
+ex: 
+document.querySelector('h2')
+<h2>​Lorem ipsum dolor sit amet.​</h2>​
+
+document.querySelector('#title')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+document.querySelector('.heading')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+document.querySelector('input')
+<input type=​"password" name id>​
+
+const myul = document.querySelector('ul')
+undefined
+myul
+<ul>​<li>​…​</li>​<li>​…​</li>​<li>​…​</li>​</ul>​
+const listItems = myul.querySelector('li')
+undefined
+
+listItems
+<li>​…​</li>​::marker​"one"</li>​
+
+listItems.style.backgroundColor = 'green'
+'green'
+listItems.innerText = 'five'
+'five'
+
+2. querySelectorAll() -> return all instances of the element in nodeList format. Note that nodeList is not a array , it does not have map() fucntionality.but it has forEach() .
+ex: 
+document.querySelectorAll('li')
+NodeList(3) : [li,li,li]
+
+//we cannnot set properties of nodelist as we set in arrays
+tempLiList.style.backgroundColor = "green" - > ERROR
+tempLiList[0].style.backgroundColor = "green"
+'green'
+EVN IF IT IS ONE ELEMENT ONLY THEN ALSO NOT 
+WE CAN USE FOR EACH TO ITERATE OVER EACH INSTANCE
+
+
+3. getElementByClassName -> returnn in HTMLCollection format.
+It does not have for each also , need to convert it into array first .
+Ex: 
+tempList
+HTMLCollection(3) [li.list-items, li.list-items, li.list-items]
+const newArr = Array.from(tempList)
+undefined
+newArr
+(3) [li.list-items, li.list-items, li.list-items]
+newArr.forEach(function (li) {
+    li.style.color = "orange"
+    }
+)
+    
+
+-->
