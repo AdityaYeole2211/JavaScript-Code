@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-3</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //CREATING DIV HERE
+
+    const div = document.createElement('div')
+    console.log(div)
+    //now can assign prperties to this div 
+    div.className = "dom"
+    div.id = Math.round(Math.random() * 10 + 1)
+    //<div class="dom" id="2"></div>
+    div.setAttribute("title", "new Division")
+    //<div class="dom" id="6" title="new Division"></div>
+    div.style.backgroundColor = "green"
+    div.style.padding = "12px"
+    //<div class="dom" id="8" title="new Division" style="background-color: green; padding: 12px;"></div>
+    //now adding text: 
+    //div.innerText = "Practicing DOM"
+    //<div class="dom" id="5" title="new Division" style="background-color: green; padding: 12px;">Practicing DOM</div>
+    //NOTE THERE IS A DEBATE TO USE THIS METHOD OR FOLLOWING METHOD , 
+    //THIS METHOD FIRST FECTHES THE EXISTING INNER TEXT OF DIV AND THEN OVERWRITES IT -> MORE COMPUTATIOBN
+    const addText = document.createTextNode("Practicing DOM")
+    div.appendChild(addText)
+    //BUT AS CAN SEE , HERE ALSO TWO OPS REQUIRED 
+
+    //NOW STILL DIV NOT VISIBLE AS CURRENLTY DIV IS ONLY IN MEMORY , 
+    //NOT ON WEBPAGE , WE NEED TO ATTACH IT TO THE DOCUMENT 
+    document.body.appendChild(div)
+    //now it will be visible
+    //<div class="dom" id="10" title="new Division" style="background-color: green; padding: 12px;">Practicing DOM</div>
+
+</script>
+</html>

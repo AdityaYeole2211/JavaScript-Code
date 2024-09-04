@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM-2</title>
 </head>
-<body style="background-color: #414141; color: aliceblue;">
+<body style="background-color: #414141;  color: aliceblue ">
     <div class="parent">
         <div class="day">Monday</div>
         <div class="day">Tuesday</div>
@@ -15,8 +15,32 @@
 </body>
 <script>
     const parent = document.querySelector('.parent')
-    console.log(parent)
-    console.log(parent.children);
-    
+    //console.log(parent)
+    //console.log(parent.children) //RETURNS  html COllection of all days 
+    //console.log(parent.children[1].innerHTML) //TUESDAY
+    //though it is html collection , can  use normal for loop for iterating
+    /*for(let i = 0; i < parent.children.length; i++){
+        console.log(parent.children[i])
+    }*/
+    parent.children[1].style.color =  'orange'
+    //console.log(parent.firstElementChild)//monday
+    //console.log(parent.lastElementChild)//thurday
+
+    const childOne = document.querySelector('.day')
+    //console.log(childOne)
+    //console.log(childOne.parentElement)//return entire parent div
+    //console.log("Nodes: ", parent.childNodes)
+    //has more childndes than actual bcz newline (first only) also considered a node , comment also 
+    //A nodelist is a collection of document nodes which includes text nodes , attribute nodes and element nodes. 
+    //A line break is also counted in nodelist but only first one. All subsequent line breaks are ignored by browser
+    console.log(childOne.nextElementSibling); // tuesday
+    //NOTE: 
+    //nextSibling vs nextElementSibling
+    //nextSibling returns the next node (an element node, a text node or a comment node). 
+    //Whitespace between elements are also text nodes. nextElementSibling returns the next element 
+    //(not text and comment nodes).
+
+
+
 </script>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-4</title>
+</head>
+<body style="background-color: #414141;  color: aliceblue" >
+    <div class="languages">
+        <li>JavaScript</li>
+    </div>
+    
+</body>
+<script>
+    //adding elements
+    function addLang(langName){
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.languages').appendChild(li)
+
+    }
+    addLang('Python')
+    addLang('GoLang')
+    //but this innerHTML method is not optimised as 
+    //inner html everytime traveerses entire list , if we have 100000 elements before raching end of list to add 
+    //new element , it will be a problem
+
+    function addOptimisedLang(langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.languages').appendChild(li)
+    
+    }
+    addOptimisedLang('TypeScript')
+
+    //EDIT
+    const secondLang = document.querySelector('li:nth-child(2)')
+    //secondLang.innerHTML = "Django"
+    //but again same problem with innerHTML
+    const newListItem = document.createElement('li')
+    newListItem.textContent = "Django"
+    secondLang.replaceWith(newListItem)
+
+    //edit
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = "<li>Ruby</li>"
+
+
+    //remove
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+    
+</script>
+</html>
