@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events-1</title>
+</head>
+<body style="background-color: #414141;">
+    <div class="container">
+        <h2>Amzing Images</h2>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <!-- inline onllcick event -> bad practice -->
+            <!-- <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="alert('clicked ')"></li> -->
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+    
+</body>
+<script>
+    //this also not encouraged 
+    //document.getElementById('owl').onclick = function(){
+    //    alert("clicked")
+    //}
+    //some other old techniques:
+    //addEvent()
+    //jQuery
+
+    //current practice : 
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert('clicked')
+    // }, false)
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log(e)
+    })
+
+    //add event listener : 
+    // gets event object e which as several properties->
+    // The target property of the event object is always a reference to the element the event occurred upon.
+    // Sometimes, you'll come across a situation where you want to prevent an event from doing what it does by default. The most common example is that of a web form, for example, a custom registration form. When you fill in the details and click the submit button, the natural behavior is for the data to be submitted to a specified page on the server for processing, and the browser to be redirected to a "success message" page of some kind (or the same page, if another is not specified).
+
+    // The trouble comes when the user has not submitted the data correctly — as a developer, you want to prevent the submission to the server and give an error message saying what's wrong and what needs to be done to put things right. 
+
+    //type->specifies the type of event-> 'click'
+    //timestamp->gives timestamp of event -timeStamp  :// 7341.700000017881
+
+    //current tagret: The currentTarget read-only property of the Event interface identifies the element to which the event handler has been attached. This will not always be the same as the element on which the event was fired, because the event may have fired on a descendant of the element with the handler, and then bubbled up to the element with the handler. The element on which the event was fired is given by Event.target.
+
+//.toElement: Returns a reference to the object that the mouse pointer entered. This property can be used for the onmouseenter, onmouseleave, onmouseout and onmouseover events.
+
+//clientx, clienty -> provides coordinates on viewprot where event occured
+//screenx ,screeny -> The screenX read-only property of the MouseEvent interface provides the horizontal coordinate (offset) of the mouse pointer in screen coordinates.The MouseEvent.screenX and MouseEvent.screenY properties give the coordinates of a mouse event's position relative to the screen's origin.
+//altKey, ctrlKey, shiftkey,  -> The KeyboardEvent.altKey read-only property is a boolean value that indicates if the alt key / ctrl key /shift key was pressed (true) or not (false) when the event occurred.
+//key code-> return key code of a key preesed  on keyboard during event
+
+
+// IMP NOTE: 
+//the false at  the end of the event listner fucntin is for event capturing true or not .
+// Sometimes indvivdual elemet has event and its parent also has event , in that case , if event capturing is true , then parent event is captures frist and then lower elements-> topdown approach 
+
+//if it is false , event bubbling occures -> smaller elements captured first then moves updwards 
+
+// Ex: 
+// document.getElementById('images').addEventListener('click', function(){
+//     console.log("parent clicked")
+// }, false)
+// document.getElementById('owl').addEventListener('click', function(){
+//     console.log("owl clicked")
+// }, false)
+
+// output: owl clicked
+//  parent clicked
+
+// document.getElementById('images').addEventListener('click', function(){
+//     console.log("parent clicked")
+// }, true)
+// document.getElementById('owl').addEventListener('click', function(){
+//     console.log("owl clicked")
+// }, true)
+
+//output: 
+//parent clicked
+//owl clicked
+
+
+//to remove images when clicked 
+// document.querySelector('#images').addEventListener('click', function(e){
+//     console.log(e.target.parentNode)
+//     let removeIt = e.target.parentNode
+//     // removeIt.remove()
+//     removeIt.parentNode.removeChild(removeIt)
+// })
+//but if a auser clicks on li  mistakenly entire ul will get deleted as parent of li is ul
+//solution: 
+
+document.querySelector('#images').addEventListener('click', function(e){
+    console.log(e.target.tagName)
+    if(e.target.tagName === 'IMG'){
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+    }
+})
+
+
+
+
+</script>
+</html>
