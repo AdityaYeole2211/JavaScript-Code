@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyCodeGenerator</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            background-color: #414141;
+            width: 100vw;
+            height: 100vh;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .insert{
+            width: 25vw;
+            height: 25vh;
+            border: 1px white solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        table, th, td {
+            border: 1px solid;
+            
+        }
+        table{
+            width: 100%;
+            height: 100%;
+        }
+        td{
+            text-align: center;
+        }
+          
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Look Down</h1>
+        <div class="insert">
+            <p>press any key and see the magic</p>
+    
+
+        </div>
+
+    </div>
+    
+</body>
+<script>
+    const insert = document.querySelector('.insert')
+
+    window.addEventListener('keydown', (e)=>{
+        insert.innerHTML = `
+        <div class = "color">
+            <table>
+                <tr>
+                    <th>Key</th>
+                    <th>KeyCode</th>
+                    <th>Code</th>
+                </tr>
+                <tr>
+                    <td>${e.key == " " ? "Space" : e.key}</td>
+                    <td>${e.keyCode}</td>
+                    <td>${e.code}</td>
+                </tr>
+            </table>
+
+        </div>
+        `
+    })
+</script>
+</html>

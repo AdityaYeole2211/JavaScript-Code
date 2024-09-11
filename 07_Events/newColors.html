@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+</head>
+<body>
+    <h1>Click Any of the Following Buttons</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    let intervalId;
+    const changeColors= function(){
+        const hex = "0123456789ABCDEF"
+        let color = '#'
+
+        for(let i = 0 ; i < 6; i++){
+            let random = Math.floor(Math.random() * 16)
+            color += hex[random]
+            
+        }
+        console.log(color)
+
+        document.body.style.backgroundColor = color
+    }
+    const startAction = function(){
+        if(!intervalId){
+            intervalId = setInterval(changeColors, 1000)
+        }
+       
+    }
+    const stopAction = function(){
+        clearInterval(intervalId)
+        intervalId = null;
+    }
+
+    
+    document.querySelector('#start').addEventListener('click', startAction)
+    document.querySelector('#stop').addEventListener('click', stopAction)
+</script>
+</html>
