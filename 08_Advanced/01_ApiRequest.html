@@ -45,5 +45,11 @@
     The fetch operation is complete. This could mean that either the data transfer has been completed successfully or failed.
     */
 
+    const xhr = new XMLHttpRequest(); //SORT OF OBJECT
+    const requestURL = 'https://randomuser.me/api/'
+    // xhr.open('type of req', 'req_url'); syntax to open request
+    xhr.open('GET', requestURL);
+    xhr.send();
+    console.log(xhr.readyState)//returns the state of the request client 
 </script>
 </html>
