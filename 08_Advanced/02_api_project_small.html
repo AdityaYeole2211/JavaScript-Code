@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET INFORMATION</title>
+    <style>
+        .container{
+            height: 50%;
+            width: 30%;
+            background-color: bisque;
+            border: 2px solid brown;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    Get Information 
+</h1>
+
+<button id="button">Click here to display inforamtion using github api</button>
+<div class="container">
+    <div class="image">
+    </div>
+    <h3 id="name"></h3>
+    <p class="publicRepos"></p>
+    <p class="followers"></p>    
+</div>
+<img src="" alt="">
+    
+</body>
+<script>
+    const requestURL = "https://api.github.com/users/adityayeole"
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', requestURL)
+    xhr.send()
+    let data = undefined
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+        data = JSON.parse(this.responseText)
+    }
+}
+    document.getElementById('button').addEventListener('click', ()=> {
+        // console.log(data.login)
+
+        const imageArea = document.getElementsByClassName('image')
+        imageArea.innerHTML = `<img src="${data.avatar_url}" alt="Noimage"/>`
+
+
+    }
+    )
+</script>
+</html>

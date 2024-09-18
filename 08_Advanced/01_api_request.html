@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API request</title>
+</head>
+<body style="background-color: grey;">
+    <h1>Hello</h1>
+</body>
+<script>
+    //What is API?
+    /*
+    An API (Application Programming Interface) is a set of rules that allows different computer programs to communicate with each other. APIs are a type of software interface that acts as a messenger, taking requests from one program and sending responses back to it.
+    */
+    /*NowAdays , api work done through fetch. But earlier , API work was done throrugh 
+    AJAX programming. Asynchronous JavaScript and XML (Ajax, or AJAX) is a web development technique in which a web app fetches content from the server by making asynchronous HTTP requests, and uses the new content to update the relevant parts of the page without requiring a full page load. This can make the page more responsive, because only the parts that need to be updated are requested.
+
+    Ajax can be used to create single-page apps, in which the entire web app consists of a single document, which uses Ajax to update its content as needed
+    Initially Ajax was implemented using the XMLHttpRequest interface, but the fetch() API is more suitable for modern web applications: it is more powerful, more flexible, and integrates better with fundamental web app technologies such as service workers. Modern web frameworks also provide abstractions for Ajax.*/
+
+    /*XMLHttpRequest (XHR) objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing. Despite its name, XMLHttpRequest can be used to retrieve any type of data, not just XML. The XMLHttpRequest.readyState property returns the state an XMLHttpRequest client is in. An XHR client exists in one of the following states:
+
+    Value	State	Description
+    0	UNSENT	            Client has been created. open() not called yet.
+    1	OPENED	            open() has been called.
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are                     available.
+    3	LOADING	            Downloading; responseText holds partial data.
+    4	DONE	            The operation is complete.
+
+    
+    UNSENT
+    The XMLHttpRequest client has been created, but the open() method hasn't been called yet.
+
+    OPENED
+    open() method has been invoked. During this state, the request headers can be set using the setRequestHeader() method and the send() method can be called which will initiate the fetch.
+
+    HEADERS_RECEIVED
+    send() has been called, all redirects (if any) have been followed and the response headers have been received.
+
+    LOADING
+    Response's body is being received. If responseType is "text" or empty string, responseText will have the partial text response as it loads.
+
+    DONE
+    The fetch operation is complete. This could mean that either the data transfer has been completed successfully or failed.
+    */
+    
+    const requestURL = "https://randomuser.me/api"
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', requestURL) //(req_method, req_url)
+    // console.log(xhr.readyState)
+    //to continously monitor changes -> give fucntion as what to do if state changes
+    xhr.onreadystatechange = function(){
+        //console.log(xhr.readyState)
+    }
+    xhr.send()
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            // console.log(ResponseText) //doesnnot work in this war
+            // console.log(this.responseText) //entire data is availaable now
+            // const data = this.responseText
+            // console.log(data.info.version) //will give erro bcz data type of data is not object
+            // console.log(typeof data) //string (most of time data from api copmes in form of string only ) -> need  to convert to object
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data) ///OBJECT
+            console.log(data.info.version) //1.4
+                   
+
+
+
+        }
+    }
+    // console.log(xhr.readyState)
+
+    /* V8 -ENGINE 
+    Chrome V8 is a JavaScript engine, which means that it executes JavaScript code. Originally, JavaScript was written to be executed by web browsers. Chrome V8, or just V8, can execute JavaScript code either within or outside of a browser, which makes server-side scripting possible.
+    The V8 JavaScript engine is a free, open-source JavaScript and WebAssembly engine that executes JavaScript code. It's written in C++ and is used in Google Chrome, Node.js, and other desktop apps
+    */
+
+    /*HOW CONSOLE.LOG WORKS -> 
+    C++ IMPLEMENTATION IN v8 : 
+    void D8Console::Log(const debug::ConsoleCallArguments& args,
+                    const v8::debug::ConsoleContext&) {
+  WriteToFile(nullptr, stdout, isolate_, args);
+}
+  void WriteToFile(const char* prefix, FILE* file, Isolate* isolate,
+                 const debug::ConsoleCallArguments& args) {
+  if (prefix) fprintf(file, "%s: ", prefix);
+  for (int i = 0; i < args.Length(); i++) {
+    HandleScope handle_scope(isolate);
+    if (i > 0) fprintf(file, " ");
+
+    Local<Value> arg = args[i];
+    Local<String> str_obj;
+
+    if (arg->IsSymbol()) arg = Local<Symbol>::Cast(arg)->Description(isolate);
+    if (!arg->ToString(isolate->GetCurrentContext()).ToLocal(&str_obj)) return;
+
+    v8::String::Utf8Value str(isolate, str_obj);
+    int n = static_cast<int>(fwrite(*str, sizeof(**str), str.length(), file));
+    if (n != str.length()) {
+      printf("Error in fwrite\n");
+      base::OS::ExitProcess(1);
+    }
+  }
+  fprintf(file, "\n");
+  // Flush the file to avoid output to pile up in a buffer. Console output is
+  // often used for timing, so it should appear as soon as the code is executed.
+  fflush(file);
+}
+
+EXPLANATION : 
+1. D8Console::Log
+This is the entry point for logging debug information to the console.
+Parameters:
+args: Represents the arguments passed to the console (likely from a JavaScript context).
+v8::debug::ConsoleContext&: Represents the console's execution context (this is unused in the function).
+The function calls WriteToFile, passing nullptr as the prefix, stdout as the file output, the current isolate_ (the V8 Isolate instance, representing a single instance of the V8 engine), and the args.
+
+
+
+WriteToFile
+This function writes the provided arguments (args) to a file or stdout.Parameters:
+prefix: A string (or nullptr) to be printed before the log. In this case, it's nullptr, so nothing is prefixed.
+file: A file handle (stdout in this case) where the output will be written.
+isolate: A pointer to the V8 Isolate instance, representing the JavaScript runtime environment.
+args: The arguments being logged (in this case, JavaScript objects being converted to strings).
+Logic:
+1. Print the prefix (if provided):
+2. Iterate through the arguments:
+For each argument in args, the code:
+        Creates a HandleScope for managing local V8 handles.
+        If it is not the first argument, it prints a space to separate the log values.
+
+3. Handle each argument:
+It retrieves the argument and checks if it is a symbol (arg->IsSymbol()), in which case it converts the symbol to its description string using Symbol::Description().
+It then converts the argument into a string representation using arg->ToString(). If the conversion fails, the function returns early (return;).
+4. Convert the V8 string to UTF-8 and write it to the file:
+The argument is converted to a UTF-8 string via v8::String::Utf8Value, which handles character encoding from V8's internal representation to UTF-8.
+The fwrite function writes the string to the file.
+If the number of characters written (n) doesn't match the expected length, an error is printed, and the process is terminated using base::OS::ExitProcess(1).
+
+5. Finalize the output:
+After processing all the arguments, the code writes a newline (\n) to the file.
+It then calls fflush(file) to ensure that the output is written immediately, which is important for debugging and timing purposes to prevent output buffering.
+     
+*/
+
+</script>
+</html>
