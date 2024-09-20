@@ -142,3 +142,43 @@ async function consumePromiseFour() {
     }
 }
 //{ user: 'Aditya', username: 'Aditay123' }
+
+//NOTE : ONLY DB CALLS , NETWORK DONT TAKE TIME , SOME OTHER THINGS ALSO TAKE TIME 
+//MUST WAIT FOR IT ALSO 
+
+// async function getAllUsers() {
+//     try {
+//         const response = fetch('https://api.github.com/users/adityayeole')
+//         const data = response.JSON()
+//         console.log(data);
+//     } catch (error) {
+//         console.log("E: ", error);    
+//     }
+// }
+getAllUsers() //THIS WILL NOT WORK , AS .JSON ALSO TAKES TIME , NEED TO AWAIT FOR IT ALSO 
+
+async function getAllUsers() {
+    try {
+        const response = fetch('https://api.github.com/users/adityayeole')
+        const data = (await response).json
+        console.log(data);
+    } catch (error) {
+        console.log("E: ", error);    
+    }
+}
+getAllUsers()
+
+//then catch syntax
+fetch('https://api.github.com/users/adityayeole')
+.then(function(response){
+    return response.json()
+})
+.then(function(data){
+    console.log(data)
+})
+.catch(function(error){
+    console.log(error);    
+})
+
+//NOTE THAT 
+// WHEN WE RUN EVERYTHING , THIS RUNS FIRST AND THEN ALL of the rest 
