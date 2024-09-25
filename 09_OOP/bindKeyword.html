@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Click Here</button>
+</body>
+<script>
+    // The bind() method of Function instances creates a new function that, when called, calls this function with its this keyword set to the provided value, and a given sequence of arguments preceding any provided when the new function is called.
+    // RETURN -> A copy of the given function with the specified this value, and initial arguments (if provided).
+
+    // use case of this is in react ,  earlier work done in following way 
+    class React{
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:3000"
+
+            //we need that when button a new obejct created should losten on button and display server info 
+            // document.querySelector('button').addEventListener('click', this.handleClick)//only button in this of handle click 
+
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this)) //now has access  to this of construtor also 
+        }
+        handleClick(){
+            console.log("Clicked");
+            console.log(this);//only button 
+            
+            console.log(this.server); //now hasloacalhoast rpinting 
+            
+            
+        }
+    }
+    const app = new React()
+
+
+</script>
+</html>
+
