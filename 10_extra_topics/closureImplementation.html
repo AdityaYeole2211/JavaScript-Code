@@ -1,0 +1,50 @@
+<!-- closure practical implementation
+want to make buttons such rhat when click color changes -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure</title>
+</head>
+<body>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+    
+</body>
+<script>
+    //for two buttons can do  in followinf way :
+    //document.querySelector('#orange').addEventListener('click', function(){
+    //    document.body.style.backgroundColor = "orange"
+    //})
+    /*document.querySelector('#green').addEventListener('click', function(){
+        document.body.style.backgroundColor = "green"
+    })
+*/
+    //but if we have suppose 10, 20,30 buttons canot do this all the time , buttons we can iterate , but for color changing need to add some genric code 
+
+    // function clickHandler(color){
+    //     document.body.style.backgroundColor = `${color}`
+    // }
+
+    // document.querySelector('#orange').addEventListener('click', clickHandler), 
+    // this will not work as requires executable 
+    // document.querySelector('#orange').addEventListener('click', clickHandler()), //this will also not work  as reuoires argument 
+    // document.querySelector('#orange').addEventListener('click', clickHandler(orange))
+    //this will not work as we are already executing the fcuntion , there fore need to writee somethhignwlelse 
+    function clickHandler(color){
+        return function(){
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+
+    // here lexical scopinf is used 
+   
+
+
+
+</script>
+</html>
