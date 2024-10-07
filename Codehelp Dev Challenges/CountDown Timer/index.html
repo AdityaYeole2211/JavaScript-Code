@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CountDown</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputWrapper" id="toChange">
+        <label for="inputTime">Enter Deadline in 24 hour format from now</label>
+        <br />
+        <input
+          placeholder="xyz"
+          type="time"
+          name="inputTime"
+          id="inputTime"
+          min="0:00"
+          max="24:00"
+        />
+        <button id="submit">Submit</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

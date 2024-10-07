@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+font-size: 2rem;
+}
+html, body{
+    height: 100%;
+    margin: 0;
+}
+.megaContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(220, 220, 240);
+
+
+}
+
+img{
+    width : 20px;
+    height: 20px;
+    
+}
+.container{
+    width: 50vw;
+    height: 90vh;
+    background-color: rgb(220, 220, 240);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+button{
+    
+    width: 40%;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.microsoftButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: rgb(52, 51, 51);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+.microsoftButton p{
+    color: white;
+}
+.amazonButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color:rgb(255, 153, 0);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+.slackButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+.faceBookButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: rgb(24, 119, 242);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+.faceBookButton p{
+    color: white;
+}
+.githubButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: rgb(92, 91, 91);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+}

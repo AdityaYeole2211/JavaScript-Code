@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(216, 216, 237);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container{
+    width: 60vw;
+    height: 40vh;
+    background-color: rgb(23, 22, 22);
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container label{
+    color: white;
+    display: block;
+    margin : 15px;
+}
+.container input{
+    display: block;
+    width: 50%;
+    margin: 20px;
+
+    
+}
+.inputWrapper{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.Hours, .mins, .secs {
+    font-size: 2rem;
+}
