@@ -1,8 +1,8 @@
 let str = "Thor       "
 // console.log(str.length); //11
 //i want that there should be a property truLength that will print the length wotihout spaces
-//we can use .trim()fucntion , but we would have to sue it seperatley on each string .
-//we want that truLenght shoudl work on every string bu default
+//we can use .trim()fucntion , but we would have to use it seperatley on each string .
+//we want that truLenght shoudl work on every string by default
 
 const myHeros = ["thor", "spiderman"]
 

@@ -30,7 +30,7 @@ function User(username, age,loginCount){
     this.username = username;
     this.age = age;
     this.loginCount = loginCount
-    //this is adding username , age , logincount attributes to the empty object we get in this keyword in global context
+    //this is adding username , age , logincount attributes to the empty object we get in 'this' keyword in global context
     return this
 }
 

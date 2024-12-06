@@ -182,3 +182,118 @@ fetch('https://api.github.com/users/adityayeole')
 
 //NOTE THAT 
 // WHEN WE RUN EVERYTHING , THIS RUNS FIRST AND THEN ALL of the rest 
+
+
+
+/*
+Understanding Asynchronous Programming in JavaScript
+Asynchronous programming is a way to handle tasks that take time to complete, such as fetching data from a server, reading files, or waiting for user input, without blocking the rest of your program. This makes JavaScript efficient despite its single-threaded nature.
+
+1. Promises in JavaScript
+What is a Promise?
+
+A Promise is an object representing the eventual completion or failure of an asynchronous operation. It acts as a placeholder for a value that will be available in the future.
+
+States of a Promise:
+
+Pending: The operation is ongoing, and the result isn’t available yet.
+Fulfilled: The operation completed successfully, and the result is available.
+Rejected: The operation failed, and an error is available.
+Example:
+
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Task Completed!"); // Successful outcome
+  }, 1000);
+});
+
+promise
+  .then(result => console.log(result)) // Output: Task Completed!
+  .catch(error => console.log(error))
+  .finally(() => console.log("Operation Done")); // Always runs
+
+
+2. Async/Await
+What is Async/Await?
+
+async: Declares a function that returns a promise.
+await: Pauses the execution of an async function until the promise resolves.
+This syntax makes asynchronous code look synchronous, improving readability.
+
+Example:
+
+
+async function fetchData() {
+  try {
+    const response = await fetch("https://api.github.com/users/adityayeole");
+    const data = await response.json();
+    console.log(data); // Processed JSON data
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+fetchData();
+
+3. Differences Between Promises and Async/Await
+
+Promises
+ 1. Syntax: Uses .then(), .catch(), and .finally() methods to handle asynchronous operations.
+ 2. Readability: Can become messy when dealing with multiple nested .then() calls (callback hell).
+ 3. Error Handling: Errors are handled using the .catch() method.
+ 4. Chaining: Requires chaining .then() methods for sequential operations.
+
+Async/Await
+ 1. Syntax: Uses async and await keywords to manage asynchronous operations.
+ 2. Readability: Provides cleaner and more synchronous-looking code, improving readability.
+ 3. Error Handling: Errors are managed using try-catch blocks for better control.
+ 4. Chaining: Enables a sequential code flow, making the logic straightforward and easier to follow.
+
+Example Comparison:
+
+Using Promises:
+
+
+fetch("https://api.github.com/users/adityayeole")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log("Error:", error));
+
+
+Using Async/Await:
+
+
+async function fetchUser() {
+  try {
+    const response = await fetch("https://api.github.com/users/adityayeole");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+fetchUser();
+
+
+4. Key Terms
+Callback Function: A function passed as an argument to another function, executed after the operation is complete.
+Job Queue: A queue where JavaScript places asynchronous tasks to be executed later, ensuring non-blocking behavior.
+
+
+5. When to Use What?
+Use Promises when:
+ 1. You need simple asynchronous tasks.
+ 2. You’re okay with chaining .then() for sequential operations.
+
+Use Async/Await when:
+ 1. You want cleaner, more readable code.
+ 2. You’re dealing with multiple asynchronous calls that depend on each other.
+
+Summary
+Promises are objects that represent the result of asynchronous tasks. They allow chaining using .then(), .catch(), and .finally().
+Async/Await simplifies asynchronous code, making it look synchronous and easier to understand.
+JavaScript handles asynchronous tasks using a job queue to maintain efficiency without blocking other code.
+With these tools, JavaScript can handle time-consuming tasks efficiently while keeping the application responsive.
+*/
