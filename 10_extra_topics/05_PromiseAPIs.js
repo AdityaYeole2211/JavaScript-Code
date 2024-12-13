@@ -19,4 +19,13 @@ The new promise resolves when all listed promises are resolved, and the array of
 //If one promise rejects, Promise.all immediately rejects, completely forgetting about the other ones in the list. Their results are ignored.
 //Normally, Promise.all(...) accepts an iterable (in most cases an array) of promises. But if any of those objects is not a promise, it’s passed to the resulting array “as is”. EX: Promise.all([p1, 2, 3 ]) =>> [val1, 2, 3]
 
+/*
+2. Promise.allSettled
+Promise.allSettled just waits for all promises to settle, regardless of the result. The resulting array has:
+
+{status:"fulfilled", value:result} for successful responses,
+{status:"rejected", reason:error} for errors.
+For example, we’d like to fetch the information about multiple users. Even if one request fails, we’re still interested in the others.
+So for each promise we get its status and value/error.
+*/
 
